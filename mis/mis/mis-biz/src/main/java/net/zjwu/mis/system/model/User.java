@@ -77,6 +77,9 @@ public class User implements Serializable {
     @UpdateBy
     @Column(name = "update_by")
     private String updateBy;
+    
+    @Column(name = "default_project")
+    private Integer defaultProject;
 
     /**
      * 备注
@@ -335,6 +338,14 @@ public class User implements Serializable {
 	 */
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
+	}
+
+	public Integer getDefaultProject() {
+		return defaultProject;
+	}
+
+	public void setDefaultProject(Integer defaultProject) {
+		this.defaultProject = defaultProject;
 	}
 
 	

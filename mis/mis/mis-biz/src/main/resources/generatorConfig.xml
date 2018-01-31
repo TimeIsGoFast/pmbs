@@ -24,8 +24,8 @@
 			targetProject="src/main/java" />
 		<javaClientGenerator targetPackage="net.zjwu.mis.business.dao"
 			targetProject="src/main/java" type="XMLMAPPER" />
-		<table schema="${jdbc.username}" tableName="t_t_sentence"
-			domainObjectName="Sentence" enableCountByExample="false"
+		<table schema="${jdbc.username}" tableName="requirement"
+			domainObjectName="Requirement" enableCountByExample="false"
 			enableDeleteByExample="false" enableSelectByExample="false"
 			enableUpdateByExample="false" />
 	</context>

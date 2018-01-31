@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.zjwu.mis.business.dao.DefectMapper" >
+  <resultMap id="BaseResultMap" type="net.zjwu.mis.business.model.Defect" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="defect_num" property="defectNum" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="requirement_id" property="requirementId" jdbcType="INTEGER" />
+    <result column="creator_uid" property="creatorUid" jdbcType="INTEGER" />
+    <result column="release_id" property="releaseId" jdbcType="INTEGER" />
+    <result column="cycle_id" property="cycleId" jdbcType="INTEGER" />
+    <result column="defect_tatus_id" property="defectTatusId" jdbcType="INTEGER" />
+    <result column="resolution_id" property="resolutionId" jdbcType="INTEGER" />
+    <result column="severity_id" property="severityId" jdbcType="INTEGER" />
+    <result column="assignee_uid" property="assigneeUid" jdbcType="INTEGER" />
+    <result column="cc_user_name" property="ccUserName" jdbcType="VARCHAR" />
+    <result column="created_date" property="createdDate" jdbcType="TIMESTAMP" />
+    <result column="last_update_date" property="lastUpdateDate" jdbcType="TIMESTAMP" />
+    <result column="last_update_uid" property="lastUpdateUid" jdbcType="INTEGER" />
+    <result column="status_code" property="statusCode" jdbcType="CHAR" />
+    <result column="reason_id" property="reasonId" jdbcType="INTEGER" />
+    <result column="summary" property="summary" jdbcType="LONGVARCHAR" />
+    <result column="descr" property="descr" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    id, defect_num, title, requirement_id, creator_uid, release_id, cycle_id, defect_tatus_id, 
+    resolution_id, severity_id, assignee_uid, cc_user_name, created_date, last_update_date, 
+    last_update_uid, status_code, reason_id
+  </sql>
+  <sql id="Blob_Column_List" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    summary, descr
+  </sql>
+</mapper>

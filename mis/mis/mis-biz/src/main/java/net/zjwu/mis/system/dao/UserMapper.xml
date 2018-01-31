@@ -18,6 +18,7 @@
     <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
     <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="default_project" jdbcType="INTEGER" property="defaultProject" />
   </resultMap>
   <resultMap id="UserWithRolesMap" type="net.zjwu.mis.system.model.User" extends="BaseResultMap">
   	<collection property="roles" resultMap="net.zjwu.mis.system.dao.RoleMapper.BaseResultMap" />
@@ -27,7 +28,7 @@
       WARNING - @mbggenerated
     -->
     id, uid, name, sex, tel, mail, enabled, create_date, update_date, create_by, update_by, 
-    remark, password
+    remark, password,default_project
   </sql>
   <select id="getUserByUid" resultMap="BaseResultMap" parameterType="java.lang.String">
     select 

@@ -12,49 +12,27 @@
     	<sitemesh:write property='title'/>
     </title>
 	<!-- Bootstrap Styles-->
-    <link 
-
-href="${pageContext.request.contextPath}/static/assets/css/bootstrap.css" 
-
-rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/static/assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FontAwesome Styles-->
-    <link href="${pageContext.request.contextPath}/static/assets/css/font-
-
-awesome.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/static/assets/css/font-awesome.css" rel="stylesheet" />
         <!-- Custom Styles-->
-    <link href="${pageContext.request.contextPath}/static/assets/css/custom-
-
-styles.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/static/assets/css/custom-styles.css" rel="stylesheet" />
      <!-- Google Fonts-->
-   <link href='https://fonts.googleapis.com/css?family=Open+Sans' 
-
-rel='stylesheet' type='text/css' />
-   <link 
-
-href="${pageContext.request.contextPath}/static/assets/js/dataTables/dataTables
-
-.bootstrap.css" rel="stylesheet" />
-    <script src="${pageContext.request.contextPath}/static/js/jquery-
-
-2.1.1.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link href="${pageContext.request.contextPath}/static/assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+    <script src="${pageContext.request.contextPath}/static/js/jquery-2.1.1.min.js"></script>
 </head>
 <body>
     <div id="wrapper">
         <nav class="navbar navbar-default top-navbar" role="navigation">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-
-
-toggle="collapse" data-target=".sidebar-collapse">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
                     <span class="sr-only">PMBS</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" 
-
-href="${pageContext.request.contextPath}/index.do"><strong><i class="icon fa 
-
-fa-plane"></i>&nbsp;&nbsp;PMBS</strong></a>
+                <a class="navbar-brand" href="${pageContext.request.contextPath}/index.do"><strong><i class="icon fa fa-plane"></i>&nbsp;&nbsp;PMBS</strong></a>
 				<div id="sideNav" href="">
 		<i class="fa fa-bars icon"></i> 
 		</div>
@@ -63,28 +41,16 @@ fa-plane"></i>&nbsp;&nbsp;PMBS</strong></a>
             <ul class="nav navbar-top-links navbar-right">
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" 
-
-aria-expanded="false">
-                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-
-
-caret-down"></i>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> 个人信
-
-息</a>
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> 个人信息</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> 设置
-
-</a>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> 设置</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a 
-
-href="${pageContext.request.contextPath}/logout.do"><i class="fa fa-sign-out 
-
-fa-fw"></i> 退出</a>
+                        <li><a href="${pageContext.request.contextPath}/logout.do"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
                         </li>
                     </ul>
                 </li>
@@ -97,34 +63,20 @@ fa-fw"></i> 退出</a>
                 <ul class="nav" id="main-menu">
 
                     <li>
-                        <a id="_index" 
-
-href="${pageContext.request.contextPath}/index.do" id="dashboard"><i class="fa 
-
-fa-dashboard"></i>主页</a>
+                        <a id="_index" href="${pageContext.request.contextPath}/index.do" id="dashboard"><i class="fa fa-dashboard"></i>主页</a>
                     </li>
                     <li>
-                        <a 
-
-href="${pageContext.request.contextPath}/user/render.do" id="userManage"><i 
-
-class="fa fa-users"></i>用户管理</a>
+                        <a href="${pageContext.request.contextPath}/user/render.do" id="userManage"><i class="fa fa-users"></i>用户管理</a>
                     </li>
                      <li>
-                        <a href="#" id="bookInfo"><i class="fa fa-book"></i>项
-
-目管理</a>
+                        <a href="#" id="bookInfo"><i class="fa fa-book"></i>项目管理</a>
                     </li>
                     <li>
-                        <a href="#" id="touristInfo"><i class="fa fa-map-
-
-marker"></i>需求管理</a>
+                        <a href="#" id="touristInfo"><i class="fa fa-map-marker"></i>需求管理</a>
                     </li>
 				
                     <li>
-                        <a href="#" id="sentence"><i class="fa fa-edit"></i>缺
-
-陷管理</a>
+                        <a href="#" id="sentence"><i class="fa fa-edit"></i>缺陷管理</a>
                     </li>
                     
                     <li>
@@ -141,13 +93,11 @@ marker"></i>需求管理</a>
         <div id="page-wrapper">
 		  <div class="header"> 
                <sitemesh:write property='body'/>				
-
+		
 		
 		</div>
             <div id="page-inner"> 
-				 <footer><p style="text-align:center">Copyright 
-
-&copy; 2017.Company name weilongzeng rights reserved.</p></footer>
+				 <footer><p style="text-align:center">Copyright &copy; 2017.Company name weilongzeng rights reserved.</p></footer>
 			</div>
          </div>
          <!-- /. PAGE WRAPPER  -->
@@ -156,21 +106,11 @@ marker"></i>需求管理</a>
     <!-- JS Scripts-->
     <!-- jQuery Js -->
       <!-- Bootstrap Js -->
-    <script 
-
-src="${pageContext.request.contextPath}/static/assets/js/bootstrap.min.js"></sc
-
-ript>
+    <script src="${pageContext.request.contextPath}/static/assets/js/bootstrap.min.js"></script>
     <!-- Metis Menu Js -->
-    <script 
-
-src="${pageContext.request.contextPath}/static/assets/js/jquery.metisMenu.js"><
-
-/script>
+    <script src="${pageContext.request.contextPath}/static/assets/js/jquery.metisMenu.js"></script>
       <!-- Custom Js -->
-      <script src="${pageContext.request.contextPath}/static/assets/js/custom-
-
-scripts.js"></script>
+     <script src="${pageContext.request.contextPath}/static/assets/js/custom-scripts.js"></script>
 </body>
 <script type="text/javascript">
   var path = '${pageContext.request.contextPath}';
