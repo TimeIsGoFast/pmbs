@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.zjwu.mis.business.dao.ProjectMapper" >
+  <resultMap id="BaseResultMap" type="net.zjwu.mis.business.model.Project" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="pic_url" property="picUrl" jdbcType="VARCHAR" />
+    <result column="created_user" property="createdUser" jdbcType="INTEGER" />
+    <result column="created_dt" property="createdDt" jdbcType="TIMESTAMP" />
+    <result column="is_active" property="isActive" jdbcType="BIT" />
+    <result column="shortname" property="shortname" jdbcType="VARCHAR" />
+    <result column="status_code" property="statusCode" jdbcType="CHAR" />
+    <result column="email_config" property="emailConfig" jdbcType="VARCHAR" />
+    <result column="owner_id" property="ownerId" jdbcType="INTEGER" />
+    <result column="department" property="department" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="net.zjwu.mis.business.model.Project" extends="BaseResultMap" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <result column="descr" property="descr" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    id, name, pic_url, created_user, created_dt, is_active, shortname, status_code, email_config, 
+    owner_id, department
+  </sql>
+  <sql id="Blob_Column_List" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    descr
+  </sql>
+</mapper>
