@@ -8,21 +8,18 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="pic_url" property="picUrl" jdbcType="VARCHAR" />
-    <result column="created_user" property="createdUser" jdbcType="INTEGER" />
-    <result column="created_dt" property="createdDt" jdbcType="TIMESTAMP" />
+    <result column="created_user" property="createdUser" jdbcType="VARCHAR" />
+    <result column="created_dt" property="createdDt" jdbcType="VARCHAR" />
     <result column="is_active" property="isActive" jdbcType="BIT" />
     <result column="shortname" property="shortname" jdbcType="VARCHAR" />
     <result column="status_code" property="statusCode" jdbcType="CHAR" />
     <result column="email_config" property="emailConfig" jdbcType="VARCHAR" />
     <result column="owner_id" property="ownerId" jdbcType="INTEGER" />
     <result column="department" property="department" jdbcType="VARCHAR" />
+     <result column="descr" property="descr" jdbcType="LONGVARCHAR" />
+     <result column="owner_name" property="ownerName" jdbcType="VARCHAR" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="net.zjwu.mis.business.model.Project" extends="BaseResultMap" >
-    <!--
-      WARNING - @mbggenerated
-    -->
-    <result column="descr" property="descr" jdbcType="LONGVARCHAR" />
-  </resultMap>
+ 
   <sql id="Base_Column_List" >
     <!--
       WARNING - @mbggenerated
@@ -36,4 +33,11 @@
     -->
     descr
   </sql>
+  <select id="virefProjectName" resultMap="BaseResultMap"> 
+    select * from project where name=#{name}
+  </select>
+  
+  <select id="getProjectByProjectName" resultMap="BaseResultMap">
+   select * from project where name=#{name}
+  </select>
 </mapper>

@@ -6,10 +6,6 @@ package net.zjwu.mis.system.controller;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import net.zjwu.mis.system.model.User;
-import net.zjwu.mis.system.service.UserService;
-import net.zjwu.mis.system.vo.Result;
-
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.LockedAccountException;
@@ -22,6 +18,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import net.zjwu.mis.business.constans.Constans;
+import net.zjwu.mis.business.model.Project;
+import net.zjwu.mis.business.service.ProjectService;
+import net.zjwu.mis.system.model.User;
+import net.zjwu.mis.system.service.UserService;
+import net.zjwu.mis.system.vo.Result;
+import net.zjwu.mis.utils.SpringUtil;
+
 /**
  * @author Lay
  *
@@ -31,6 +35,9 @@ public class SystemController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private ProjectService projectService;
 
 	@RequestMapping("/renderLogin")
 	public String renderLogin(){
@@ -44,8 +51,8 @@ public class SystemController {
 	
 	@RequestMapping("/login")
 	@ResponseBody
-	public Result login(UsernamePasswordToken token, HttpSession session) {
-		//response.setContentType("text/html;charset=UTF-8");
+	public Result login(UsernamePasswordToken token, HttpSession session,HttpServletResponse response) {
+		response.setContentType("text/html;charset=UTF-8");
 		Result result = new Result();
 		try {
 			Subject subject = SecurityUtils.getSubject();
@@ -75,6 +82,11 @@ public class SystemController {
 	public String index(Model model){
 		String uid = (String)SecurityUtils.getSubject().getPrincipal();
 		User user = userService.getUserByUid(uid);
+		int projectId = user.getDefaultProject();
+		//get project
+		Project project = projectService.selectByKey(projectId);
+		SpringUtil.setSession(Constans.CURRENT_USER, user);
+		SpringUtil.setSession(Constans.CURRENT_PROJECT, project);
 		model.addAttribute("user",user);
 		return "system/index";
 	}

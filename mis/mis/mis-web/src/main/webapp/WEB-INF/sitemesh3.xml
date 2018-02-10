@@ -5,7 +5,7 @@
  <mapping path="/renderLogin*" exclue="true" />
  <mapping path="/system*" decorator="/WEB-INF/jsp/decorators/systemDecorator.jsp" />
  <mapping path="/user*" decorator="/WEB-INF/jsp/decorators/systemDecorator.jsp" />
- <mapping path="/book*" decorator="/WEB-INF/jsp/decorators/systemDecorator.jsp" />
+ <mapping path="/project*" decorator="/WEB-INF/jsp/decorators/systemDecorator.jsp" />
   <mapping path="/index*" decorator="/WEB-INF/jsp/decorators/systemDecorator.jsp" />
  <!--  <mapping path="/user*" decorator="/WEB-INF/jsp/decorators/systemDecorator.jsp" /> --> 
  <!-- 指明满足“/exclude.jsp*”的页面，将被排除，不被装饰 -->
