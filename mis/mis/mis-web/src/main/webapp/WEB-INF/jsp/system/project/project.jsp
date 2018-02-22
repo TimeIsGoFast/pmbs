@@ -5,9 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>项目管理</title>
-     <!-- Google Fonts-->
-    
-  
      <!-- TABLE STYLES-->
     <link href="${pageContext.request.contextPath}/static/css/bootstrap-select.css" rel="stylesheet">
 
@@ -18,8 +15,11 @@
                 <div class="col-md-12">
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
+                      <div class="panel-heading">
+                          <span><i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;项目管理</span>
+                        </div>
                         <div class="panel-body">
-                        <a href="#" class="btn btn-success" style="margin: 10px 0px 20px;" data-toggle="modal" data-target="#addEditModal"><i class="fa fa-plus"></i>&nbsp;增加</a>
+                        <a href="#" class="btn btn-success" style="margin: 0px 0px 20px;" data-toggle="modal" data-target="#addEditModal"><i class="fa fa-plus"></i>&nbsp;增加</a>
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
@@ -45,7 +45,7 @@
                                             <td align="center">
                                             <button class="btn btn-primary" title='编辑' data-id="${Project.id}" id="editProjectBtn"><i class="fa fa-edit "></i></button>
                                             <button class="btn btn-danger" title='删除' data-id="${Project.id}" id="proejct_delete" onclick="deleteProjectBtn()"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                            <button class="btn btn-success" title='人员管理' data-id="${Project.id}"><i class="fa fa-users" aria-hidden="true"></i></button>
+                                            <button class="btn btn-success" title='人员管理' data-id="${Project.id}" onclick="javascript:window.location.href='${pageContext.request.contextPath}/project/projectUserRender.do?projectId=${Project.id}'"><i class="fa fa-users" aria-hidden="true"></i></button>
                                             </td>
                                         </tr>
                                          </c:forEach>
@@ -138,4 +138,4 @@
     
     <script src="${pageContext.request.contextPath}/static/js/bootstrap-select.js"></script>
 
-    <script src="${pageContext.request.contextPath}/static/js/project.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/project/project.js"></script>

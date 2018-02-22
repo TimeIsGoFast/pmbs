@@ -104,5 +104,13 @@ public class ProjectController extends BaseController<Project> {
 	public Project getProjectInfo(int projectId){
 		return projectService.selectByKey(projectId);
 	}
+	
+	//projectUser index
+	@RequestMapping("/projectUserRender")
+	public String projectUserRender(Model nodel,int projectId){
+		//得到所有的用户信息
+		
+		return "system/project/project_users";
+	}
 
 }

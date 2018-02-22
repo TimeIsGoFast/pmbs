@@ -104,7 +104,6 @@
 			    $("#descr").val(data.descr);
 			    $('#ownerId').selectpicker('val', data.ownerId);
 			    $("#department").val(data.department);
-			    alert( $("#project_id").val());
 			    $("#addEditModal").modal('show');
 			}
 		});
