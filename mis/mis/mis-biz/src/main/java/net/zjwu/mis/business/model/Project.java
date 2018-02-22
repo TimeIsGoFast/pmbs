@@ -15,10 +15,10 @@ public class Project implements Serializable {
     private String picUrl;
 
     @Column(name = "created_user")
-    private Integer createdUser;
+    private String createdUser;
 
     @Column(name = "created_dt")
-    private Date createdDt;
+    private String createdDt;
 
     @Column(name = "is_active")
     private Boolean isActive;
@@ -37,6 +37,9 @@ public class Project implements Serializable {
     private String department;
 
     private String descr;
+    
+    @Column(name="owner_name")
+    private String ownerName;
 
     private static final long serialVersionUID = 1L;
 
@@ -85,28 +88,28 @@ public class Project implements Serializable {
     /**
      * @return created_user
      */
-    public Integer getCreatedUser() {
+    public String getCreatedUser() {
         return createdUser;
     }
 
     /**
      * @param createdUser
      */
-    public void setCreatedUser(Integer createdUser) {
+    public void setCreatedUser(String createdUser) {
         this.createdUser = createdUser;
     }
 
     /**
      * @return created_dt
      */
-    public Date getCreatedDt() {
+    public String getCreatedDt() {
         return createdDt;
     }
 
     /**
      * @param createdDt
      */
-    public void setCreatedDt(Date createdDt) {
+    public void setCreatedDt(String createdDt) {
         this.createdDt = createdDt;
     }
 
@@ -207,4 +210,14 @@ public class Project implements Serializable {
     public void setDescr(String descr) {
         this.descr = descr;
     }
+
+	public String getOwnerName() {
+		return ownerName;
+	}
+
+	public void setOwnerName(String ownerName) {
+		this.ownerName = ownerName;
+	}
+    
+    
 }

@@ -12,6 +12,7 @@
     	<sitemesh:write property='title'/>
     </title>
 	<!-- Bootstrap Styles-->
+	
     <link href="${pageContext.request.contextPath}/static/assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FontAwesome Styles-->
     <link href="${pageContext.request.contextPath}/static/assets/css/font-awesome.css" rel="stylesheet" />
@@ -20,6 +21,9 @@
      <!-- Google Fonts-->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <link href="${pageContext.request.contextPath}/static/assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/static/css/bootstrapValidator.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/css/layer/layer.css" rel="stylesheet">
+    <sitemesh:write property='head'/>
     <script src="${pageContext.request.contextPath}/static/js/jquery-2.1.1.min.js"></script>
 </head>
 <body>
@@ -69,7 +73,7 @@
                         <a href="${pageContext.request.contextPath}/user/render.do" id="userManage"><i class="fa fa-users"></i>用户管理</a>
                     </li>
                      <li>
-                        <a href="#" id="bookInfo"><i class="fa fa-book"></i>项目管理</a>
+                        <a href="${pageContext.request.contextPath}/project/render.do" id="projectInfo"><i class="fa fa-book"></i>项目管理</a>
                     </li>
                     <li>
                         <a href="#" id="touristInfo"><i class="fa fa-map-marker"></i>需求管理</a>
@@ -106,13 +110,22 @@
     <!-- JS Scripts-->
     <!-- jQuery Js -->
       <!-- Bootstrap Js -->
+    
     <script src="${pageContext.request.contextPath}/static/assets/js/bootstrap.min.js"></script>
     <!-- Metis Menu Js -->
     <script src="${pageContext.request.contextPath}/static/assets/js/jquery.metisMenu.js"></script>
       <!-- Custom Js -->
-     <script src="${pageContext.request.contextPath}/static/assets/js/custom-scripts.js"></script>
+   
+      <script src="${pageContext.request.contextPath}/static/assets/js/jquery.metisMenu.js"></script>
+     <!-- DATA TABLE SCRIPTS -->
+    <script src="${pageContext.request.contextPath}/static/assets/js/dataTables/jquery.dataTables.js"></script>
+    <script src="${pageContext.request.contextPath}/static/assets/js/dataTables/dataTables.bootstrap.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/bootstrapValidator.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/layer.js"></script>
+    <script src="${pageContext.request.contextPath}/static/assets/js/custom-scripts.js"></script>
 </body>
 <script type="text/javascript">
   var path = '${pageContext.request.contextPath}';
+
 </script>
 </html>

@@ -24,8 +24,8 @@
 			targetProject="src/main/java" />
 		<javaClientGenerator targetPackage="net.zjwu.mis.business.dao"
 			targetProject="src/main/java" type="XMLMAPPER" />
-		<table schema="${jdbc.username}" tableName="requirement"
-			domainObjectName="Requirement" enableCountByExample="false"
+		<table schema="${jdbc.username}" tableName="project_user_role"
+			domainObjectName="ProjectUserRole" enableCountByExample="false"
 			enableDeleteByExample="false" enableSelectByExample="false"
 			enableUpdateByExample="false" />
 	</context>
