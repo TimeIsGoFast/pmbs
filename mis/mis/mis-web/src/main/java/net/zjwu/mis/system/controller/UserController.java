@@ -19,9 +19,11 @@ import com.github.pagehelper.PageInfo;
 import net.zjwu.mis.base.controller.BaseController;
 import net.zjwu.mis.business.vo.ResultVo;
 import net.zjwu.mis.system.model.User;
+import net.zjwu.mis.system.model.UserRole;
 import net.zjwu.mis.system.service.UserRoleService;
 import net.zjwu.mis.system.service.UserService;
 import net.zjwu.mis.system.vo.Result;
+import net.zjwu.mis.utils.SpringUtil;
 
 /**
  * @author Lay
@@ -113,4 +115,42 @@ public class UserController extends BaseController<User> {
 		}
 		return rs;
 	}
+	
+	//addEditUser
+	@RequestMapping("/addEditUser")
+	@ResponseBody
+	public ResultVo addEditUser(User user){
+		ResultVo rs = new ResultVo();
+		rs.setCode(1);
+		String name = SpringUtil.getCurrentUser().getName();
+		user.setUpdateBy(name);
+		user.setUpdateDate(new Date());
+		user.setEnabled("Y");
+		try{
+	 	if(user.getId()!=null){
+	 		User user1 = userService.selectByKey(user.getId());
+	 		user.setDefaultProject(user1.getDefaultProject());
+			userService.update(user);
+		}else{
+			user.setCreateBy(name);
+			user.setCreateDate(new Date());
+			user.setDefaultProject(1);
+			userService.save(user);
+			User user3 = userService.getUserByUid(user.getUid());
+			userService.initUserRole(user3.getId(),3);
+		}
+		
+		}catch(Exception e){
+			rs.setCode(0);
+			rs.setMessage("save faild");
+		}
+		return rs;
+	}
+	
+	@RequestMapping("/getUserInfo")
+	@ResponseBody
+	public User getUserInfo(int id){
+		return userService.selectByKey(id);
+	}
+	
 }

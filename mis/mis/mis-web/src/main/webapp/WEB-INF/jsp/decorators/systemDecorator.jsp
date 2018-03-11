@@ -84,7 +84,7 @@
                     </li>
                     
                     <li>
-                        <a href="#"><i class="fa fa-table"></i>我的项目</a>
+                        <a href="${pageContext.request.contextPath}/project/myproject.do"><i class="fa fa-table"></i>我的项目</a>
                     </li>
                
                    

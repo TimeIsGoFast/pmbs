@@ -19,6 +19,14 @@ public class UserRole implements Serializable {
     /**
      * @return id
      */
+    
+    public UserRole(){
+    	
+    }
+    public UserRole(int userId,int roleId){
+    	this.userId=userId;
+    	this.roleId=roleId;
+    }
     public Integer getId() {
         return id;
     }

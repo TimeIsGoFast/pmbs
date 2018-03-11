@@ -10,5 +10,7 @@
   <sql id="Base_Column_List" >
     id, project_id, user_id, role_id
   </sql>
- 
+ <delete id="deleteByProjectId">
+ delete from project_user_role where project_id=#{projectId} and user_id = #{userId} and role_id=#{roleId}
+ </delete>
 </mapper>

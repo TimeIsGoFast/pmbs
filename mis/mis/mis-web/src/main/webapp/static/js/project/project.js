@@ -89,7 +89,7 @@
 		});
 	});
 	
-	$("#editProjectBtn").on("click",function(){
+	$(".editProjectBtn").on("click",function(){
 		var projectId = $("#proejct_delete").attr("data-id");
 		$.ajax({
 			url:path+'/project/getProjectInfo.do',

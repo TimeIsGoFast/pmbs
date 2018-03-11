@@ -71,4 +71,9 @@ public class RoleServiceImpl extends BaseServiceImpl<Role> implements
 		List<Role> roles = roleMapper.selectByExample(example);
 		return new PageInfo<Role>(roles);
 	}
+
+	@Override
+	public List<Role> getRolesByRemark(String remark) {
+		return roleMapper.getRolesByRemark(remark);
+	}
 }

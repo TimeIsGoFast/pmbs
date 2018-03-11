@@ -5,4 +5,6 @@ import net.zjwu.mis.business.model.ProjectUserRole;
 
 public interface ProjectUserRoleService extends BaseService<ProjectUserRole>{
 
+	void deleteByProjectId(int projectId, int userId, int roleId);
+
 }

@@ -40,4 +40,8 @@
   <select id="getProjectByProjectName" resultMap="BaseResultMap">
    select * from project where name=#{name}
   </select>
+  
+  <select id="getMyProjects" resultMap="BaseResultMap">
+  select pro.* from project_user_role pur LEFT JOIN  project pro on pur.project_id=pro.id where pur.user_id=#{userId} and pur.role_id =1;
+  </select>
 </mapper>

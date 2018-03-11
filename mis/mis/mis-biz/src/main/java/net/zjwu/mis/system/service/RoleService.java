@@ -21,5 +21,7 @@ public interface RoleService extends BaseService<Role>{
 	PageInfo<Role> listRolesPaged(int page,int pageSize,Role role);
 	
 	List<Role> getRolesByUserId(int userId);
+
+	List<Role> getRolesByRemark(String remark);
 	
 }

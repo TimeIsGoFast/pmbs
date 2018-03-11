@@ -11,12 +11,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import net.zjwu.mis.base.controller.BaseController;
+import net.zjwu.mis.business.dto.UserDto;
 import net.zjwu.mis.business.model.Project;
 import net.zjwu.mis.business.model.ProjectUserRole;
 import net.zjwu.mis.business.service.ProjectService;
 import net.zjwu.mis.business.service.ProjectUserRoleService;
 import net.zjwu.mis.business.vo.ResultVo;
+import net.zjwu.mis.system.model.Role;
 import net.zjwu.mis.system.model.User;
+import net.zjwu.mis.system.service.RoleService;
 import net.zjwu.mis.system.service.UserService;
 import net.zjwu.mis.utils.SpringUtil;
 
@@ -31,6 +34,9 @@ public class ProjectController extends BaseController<Project> {
 	private UserService userService;
 	@Autowired
 	private ProjectUserRoleService projectUserRoleService;
+	
+	@Autowired
+	private RoleService roleService;
 	
 	@RequestMapping("/render")
 	public String render(Model model){
@@ -107,10 +113,63 @@ public class ProjectController extends BaseController<Project> {
 	
 	//projectUser index
 	@RequestMapping("/projectUserRender")
-	public String projectUserRender(Model nodel,int projectId){
-		//得到所有的用户信息
-		
+	public String projectUserRender(Model model,int projectId){
+		//get role
+		List<Role> roles = roleService.getRolesByRemark("PROJECT");
+		List<User> users2 = userService.selectAll(); 
+		List<UserDto> users = projectService.getProjefctUsers(projectId);
+		Project pro = projectService.selectByKey(projectId);
+		model.addAttribute("roles", roles);
+		model.addAttribute("users", users);
+		model.addAttribute("users2", users2);
+		model.addAttribute("project", pro);
 		return "system/project/project_users";
 	}
-
+	
+	//addProjectUserRole
+	@RequestMapping("/addProjectUserRole")
+	@ResponseBody
+	public ResultVo addProjectUserRole(int  projectId,int userId,int roleId){
+		ResultVo result = new ResultVo();
+		result.setCode(1);
+		try {
+			 ProjectUserRole pjur = new ProjectUserRole();
+			 pjur.setProjectId(projectId);
+			 pjur.setUserId(userId);
+			 pjur.setRoleId(roleId);
+			 projectUserRoleService.save(pjur);
+		} catch (Exception e) {
+			e.printStackTrace();
+			result.setCode(0);
+		}
+		return result;
+		
+	}
+	
+	//deleteProjectUserRole
+	@RequestMapping("/deleteProjectUserRole")
+	@ResponseBody
+	public ResultVo deleteProjectUserRole(int  projectId,int userId,int roleId){
+		ResultVo result = new ResultVo();
+		result.setCode(1);
+		try {
+			 projectUserRoleService.deleteByProjectId(projectId,userId,roleId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			result.setCode(0);
+		}
+		return result;
+		
+	}
+	
+	//Myproject
+	@RequestMapping("/myproject")
+	public String myproject(Model model){
+		int userId = SpringUtil.getCurrentUser().getId();
+		List<Project> list = projectService.getMyProjects(userId);
+		List<User> users = userService.selectAll();
+		model.addAttribute("projects", list);
+		model.addAttribute("users", users);
+		return "system/project/project";
+	}
 }

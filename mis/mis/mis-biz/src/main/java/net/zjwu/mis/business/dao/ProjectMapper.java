@@ -12,4 +12,6 @@ public interface ProjectMapper extends Mapper<Project> {
 	List<Project> virefProjectName(@Param(value="name")String name);
 
 	Project getProjectByProjectName(@Param(value="name")String name);
+
+	List<Project> getMyProjects(@Param(value="userId")int userId);
 }

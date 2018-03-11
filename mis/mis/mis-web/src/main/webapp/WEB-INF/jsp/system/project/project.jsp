@@ -43,7 +43,7 @@
                                             <td>${Project.createdDt }</td>
                                             <td>${Project.ownerName }</td>
                                             <td align="center">
-                                            <button class="btn btn-primary" title='编辑' data-id="${Project.id}" id="editProjectBtn"><i class="fa fa-edit "></i></button>
+                                            <button class="btn btn-primary editProjectBtn" title='编辑' data-id="${Project.id}" ><i class="fa fa-edit "></i></button>
                                             <button class="btn btn-danger" title='删除' data-id="${Project.id}" id="proejct_delete" onclick="deleteProjectBtn()"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                             <button class="btn btn-success" title='人员管理' data-id="${Project.id}" onclick="javascript:window.location.href='${pageContext.request.contextPath}/project/projectUserRender.do?projectId=${Project.id}'"><i class="fa fa-users" aria-hidden="true"></i></button>
                                             </td>
