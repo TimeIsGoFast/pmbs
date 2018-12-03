@@ -20,6 +20,11 @@ public class ProjectUserRoleServiceImpl extends BaseServiceImpl<ProjectUserRole>
 		purMapper.deleteByProjectId(projectId,userId,roleId);
 		
 	}
+	@Override
+	public void deleteByProId(int projectId) {
+		purMapper.deleteByProId(projectId);
+		
+	}
 
 
 }

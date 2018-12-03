@@ -6,7 +6,10 @@
  <mapping path="/system*" decorator="/WEB-INF/jsp/decorators/systemDecorator.jsp" />
  <mapping path="/user*" decorator="/WEB-INF/jsp/decorators/systemDecorator.jsp" />
  <mapping path="/project*" decorator="/WEB-INF/jsp/decorators/systemDecorator.jsp" />
+ <mapping path="/testplan*" decorator="/WEB-INF/jsp/decorators/systemDecorator.jsp" />
   <mapping path="/index*" decorator="/WEB-INF/jsp/decorators/systemDecorator.jsp" />
+    <mapping path="/defect*" decorator="/WEB-INF/jsp/decorators/systemDecorator.jsp" />
+     <mapping path="/task*" decorator="/WEB-INF/jsp/decorators/systemDecorator.jsp" />
  <!--  <mapping path="/user*" decorator="/WEB-INF/jsp/decorators/systemDecorator.jsp" /> --> 
  <!-- 指明满足“/exclude.jsp*”的页面，将被排除，不被装饰 -->
   

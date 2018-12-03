@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import net.zjwu.mis.base.controller.BaseController;
+import net.zjwu.mis.business.constans.Constans;
 import net.zjwu.mis.business.dto.UserDto;
 import net.zjwu.mis.business.model.Project;
 import net.zjwu.mis.business.model.ProjectUserRole;
@@ -96,6 +97,7 @@ public class ProjectController extends BaseController<Project> {
 		result.setCode(1);
 		try {
 			projectService.delete(projectId);
+			projectUserRoleService.deleteByProId(projectId);
 		} catch (Exception e) {
 			e.printStackTrace();
 			result.setCode(0);
@@ -113,7 +115,7 @@ public class ProjectController extends BaseController<Project> {
 	
 	//projectUser index
 	@RequestMapping("/projectUserRender")
-	public String projectUserRender(Model model,int projectId){
+	public String projectUserRender(Model model,Integer projectId){
 		//get role
 		List<Role> roles = roleService.getRolesByRemark("PROJECT");
 		List<User> users2 = userService.selectAll(); 
@@ -122,14 +124,14 @@ public class ProjectController extends BaseController<Project> {
 		model.addAttribute("roles", roles);
 		model.addAttribute("users", users);
 		model.addAttribute("users2", users2);
-		model.addAttribute("project", pro);
+		model.addAttribute("project2", pro);
 		return "system/project/project_users";
 	}
 	
 	//addProjectUserRole
 	@RequestMapping("/addProjectUserRole")
 	@ResponseBody
-	public ResultVo addProjectUserRole(int  projectId,int userId,int roleId){
+	public ResultVo addProjectUserRole(Integer projectId,Integer userId,Integer roleId){
 		ResultVo result = new ResultVo();
 		result.setCode(1);
 		try {
@@ -171,5 +173,19 @@ public class ProjectController extends BaseController<Project> {
 		model.addAttribute("projects", list);
 		model.addAttribute("users", users);
 		return "system/project/project";
+	}
+	
+	@RequestMapping("/changeProject")
+	public String changeProject(Model model,int id){
+		User user = SpringUtil.getCurrentUser();
+		SpringUtil.setSession(Constans.CURRENT_USER, user);
+		//get project
+		Project project = projectService.selectByKey(id);
+		SpringUtil.setSession(Constans.CURRENT_PROJECT, project);
+		
+		//projects
+		List<Project> projects = projectService.getMyProjects(user.getId());
+		SpringUtil.setSession("projects", projects);
+		return "system/index";
 	}
 }

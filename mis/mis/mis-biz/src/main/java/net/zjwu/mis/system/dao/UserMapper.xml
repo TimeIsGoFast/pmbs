@@ -57,4 +57,8 @@
   <select id="getProjefctUsers" parameterType="java.lang.Integer" resultMap="projectUserRolesMap">
    select ur.id,ur.`name`,ur.uid,ur.mail,ro.id as roid,ro.`name` as rolename from project_user_role pur LEFT JOIN t_s_user ur on pur.user_id=ur.id LEFT JOIN t_s_role ro on pur.role_id=ro.id where pur.project_id=#{projectId} 
   </select>
+  
+  <select id="getUsersByUserType" resultMap="BaseResultMap">
+  select * from t_s_user where remark=#{userType}
+  </select>
 </mapper>

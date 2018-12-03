@@ -2,6 +2,8 @@ package net.zjwu.mis.system.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import net.zjwu.mis.business.dto.UserDto;
 import net.zjwu.mis.system.model.User;
 import tk.mybatis.mapper.common.Mapper;
@@ -14,5 +16,7 @@ public interface UserMapper extends Mapper<User> {
 	List<User> getUsersByRoleId(int roleId);
 
 	List<UserDto> getProjefctUsers(int projectId);
+
+	List<User> getUsersByUserType(@Param(value="userType")String userType);
 
 }

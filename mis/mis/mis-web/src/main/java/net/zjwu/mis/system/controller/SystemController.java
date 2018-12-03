@@ -3,6 +3,8 @@
  */
 package net.zjwu.mis.system.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -20,7 +22,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import net.zjwu.mis.business.constans.Constans;
 import net.zjwu.mis.business.model.Project;
+import net.zjwu.mis.business.service.DefectService;
 import net.zjwu.mis.business.service.ProjectService;
+import net.zjwu.mis.business.service.ProjectUserRoleService;
 import net.zjwu.mis.system.model.User;
 import net.zjwu.mis.system.service.UserService;
 import net.zjwu.mis.system.vo.Result;
@@ -38,6 +42,12 @@ public class SystemController {
 	
 	@Autowired
 	private ProjectService projectService;
+	
+	@Autowired
+	private ProjectUserRoleService purService;
+	
+	@Autowired
+	private DefectService defectService;
 
 	@RequestMapping("/renderLogin")
 	public String renderLogin(){
@@ -77,17 +87,26 @@ public class SystemController {
 		subject.logout();
 		return "/login";
 	}
+
 	
 	@RequestMapping("/index")
 	public String index(Model model){
 		String uid = (String)SecurityUtils.getSubject().getPrincipal();
 		User user = userService.getUserByUid(uid);
+		resetSession(user);
+		model.addAttribute("user",user);
+		return "system/index";
+	}
+	
+	private void resetSession(User user){
+		SpringUtil.setSession(Constans.CURRENT_USER, user);
 		int projectId = user.getDefaultProject();
 		//get project
 		Project project = projectService.selectByKey(projectId);
-		SpringUtil.setSession(Constans.CURRENT_USER, user);
 		SpringUtil.setSession(Constans.CURRENT_PROJECT, project);
-		model.addAttribute("user",user);
-		return "system/index";
+		
+		//projects
+		List<Project> projects = projectService.getMyProjects(user.getId());
+		SpringUtil.setSession("projects", projects);
 	}
 }

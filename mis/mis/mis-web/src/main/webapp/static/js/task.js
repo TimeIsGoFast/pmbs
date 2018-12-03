@@ -1,45 +1,9 @@
  $(document).ready(function () {
    /* $('#dataTables-example').dataTable();*/
-    $("#dataTables-example").dataTable().fnDraw(false);  
     $("#main-menu li a").removeClass("active-menu");
-	$("#projectInfo").addClass("active-menu");
+	$("#taskInfo").addClass("active-menu");
  
-	 $('#addEditForm').bootstrapValidator({
-	//   live: 'disabled',
-	   message: 'This value is not valid',
-	   feedbackIcons: {
-	       valid: 'glyphicon glyphicon-ok',
-	       invalid: 'glyphicon glyphicon-remove',
-	       validating: 'glyphicon glyphicon-refresh'
-	   },
-	   fields: {
-		   shortname: {
-	           container: '#shortnameMessage',
-	           validators: {
-	               notEmpty: {
-	                   message: '简称不能为空'
-	               }
-	           }
-	       },
-		   name: {
-	           container: '#nameMessage',
-	           validators: {
-	               notEmpty: {
-	                   message: '项目名不能为空'
-	               }
-	           }
-	       },
-	       department: {
-	           container: '#departmentMessage',
-	           validators: {
-	               notEmpty: {
-	                   message: '部门不能为空'
-	               }
-	           }
-	       }
-	      
-	   }
-	});
+	 
 	   
  });
  
@@ -115,3 +79,4 @@
 	   $("#delete_project_id").val(id)
 		$('#deleteModal').modal('show');
 }
+

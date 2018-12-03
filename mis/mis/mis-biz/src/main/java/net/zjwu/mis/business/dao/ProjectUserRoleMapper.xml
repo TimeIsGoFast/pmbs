@@ -13,4 +13,7 @@
  <delete id="deleteByProjectId">
  delete from project_user_role where project_id=#{projectId} and user_id = #{userId} and role_id=#{roleId}
  </delete>
+ <delete id="deleteByProId">
+ delete from project_user_role where project_id=#{projectId}
+ </delete>
 </mapper>

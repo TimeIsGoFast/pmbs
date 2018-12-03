@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
  <link href="${pageContext.request.contextPath}/static/css/bootstrap-select.css" rel="stylesheet">
-<title>图书详情</title>
+<title>项目用户</title>
 </head>
   <div class="header"> 
          <h1 class="page-header">
@@ -18,12 +18,13 @@
            <div class="col-xs-12">
                <div class="panel panel-default">
                    <div class="panel-body">
-                       <span style="margin-top:5px;float:left;">当前项目：${project.name}</span>
+                       <span style="margin-top:5px;float:left;">当前项目：${project2.name}</span>
                        <a href="${pageContext.request.contextPath}/project/render.do" class="btn btn-default btn-sm" style="float:right;"><i class="fa fa-mail-reply"></i>&nbsp;返回</a>
                    </div>
                </div>
            </div>
        </div>
+        <input type="hidden" value="${project2.id}" id="projectId_">
          <div class="row">
              <div class="col-xs-12">					
                  <div class="panel panel-default">
@@ -102,15 +103,15 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                            <button type="submit" class="btn btn-primary" id="addEditButton">确认</button>
+                                            <button type="button" class="btn btn-primary" id="addEditButton">确认</button>
                                         </div>
                                         </form>
                                     </div>
                                 </div>
+                                 
               </div>   
-              <script>
-             var projectId= ${project.id};
-             </script> 
+            
+          
              <script src="${pageContext.request.contextPath}/static/js/bootstrap-select.js"></script>   
     <script src="${pageContext.request.contextPath}/static/assets/js/jquery.metisMenu.js"></script>
      <!-- DATA TABLE SCRIPTS -->

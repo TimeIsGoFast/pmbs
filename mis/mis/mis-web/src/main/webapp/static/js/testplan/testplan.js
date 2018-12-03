@@ -2,8 +2,8 @@
    /* $('#dataTables-example').dataTable();*/
     $("#dataTables-example").dataTable().fnDraw(false);  
     $("#main-menu li a").removeClass("active-menu");
-	$("#projectInfo").addClass("active-menu");
- 
+	$("#testplanInfo").addClass("active-menu");
+
 	 $('#addEditForm').bootstrapValidator({
 	//   live: 'disabled',
 	   message: 'This value is not valid',
@@ -13,14 +13,7 @@
 	       validating: 'glyphicon glyphicon-refresh'
 	   },
 	   fields: {
-		   shortname: {
-	           container: '#shortnameMessage',
-	           validators: {
-	               notEmpty: {
-	                   message: '简称不能为空'
-	               }
-	           }
-	       },
+	
 		   name: {
 	           container: '#nameMessage',
 	           validators: {
@@ -28,16 +21,8 @@
 	                   message: '项目名不能为空'
 	               }
 	           }
-	       },
-	       department: {
-	           container: '#departmentMessage',
-	           validators: {
-	               notEmpty: {
-	                   message: '部门不能为空'
-	               }
-	           }
 	       }
-	      
+
 	   }
 	});
 	   
@@ -46,7 +31,7 @@
  $(function(){
 	$("#addEditButton").on("click",function(){
 		$.ajax({
-			url:path+'/project/addEditPro.do',
+			url:path+'/testplan/addTestPlan.do',
 			type:'post',
 			dataType:'json',
 			data:$("#addEditForm").serialize(),
@@ -70,10 +55,10 @@
 		var projectId = $("#delete_project_id").val();
 		console.log(projectId);
 		$.ajax({
-			url:path+'/project/deletePro.do',
+			url:path+'/testplan/deleteplan.do',
 			type:'post',
 			dataType:'json',
-			data:{'projectId':projectId},
+			data:{'planId':projectId},
 			success:function(data){
 				console.log(data);
 				if(data.code==1){
@@ -92,18 +77,16 @@
 	$(".editProjectBtn").on("click",function(){
 		var projectId = $(this).attr("data-id");
 		$.ajax({
-			url:path+'/project/getProjectInfo.do',
+			url:path+'/testplan/getPlanInfo.do',
 			type:'post',
 			dataType:'json',
-			data:{'projectId':projectId},
+			data:{'planId':projectId},
 			success:function(data){
 				console.log(data);
 			    $("#project_id").val(data.id);
 			    $("#projectName").val(data.name);
-			    $("#shortname").val(data.shortname);
 			    $("#descr").val(data.descr);
-			    $('#ownerId').selectpicker('val', data.ownerId);
-			    $("#department").val(data.department);
+			    $('#assignerId').selectpicker('val', data.assignerId);
 			    $("#addEditModal").modal('show');
 			}
 		});

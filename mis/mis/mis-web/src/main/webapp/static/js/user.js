@@ -142,6 +142,7 @@
 			    $("#mail").val(data.mail);
 			    $('#password').val(data.password);
 			    $("#sex").val(data.sex);
+			    $("#remark").val(data.remark);
 			    $("#tel").val(data.tel);
 			    $("#addEditModal").modal('show');
 			}

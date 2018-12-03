@@ -8,7 +8,7 @@ $(function(){
 	$("#addEditButton").on("click",function(){ 
 		var userId = $("#userId").val();
 		var roleId = $("#roleId").val();
-	
+	  var projectId = $("#projectId_").val();
 		$.ajax({
 			url:path+'/project/addProjectUserRole.do',
 			type:'post',
@@ -19,7 +19,7 @@ $(function(){
 				if(data.code==1){
 					$("#addEditModal").modal('hide');
 					layer.msg('成功了！', {time: 2000, icon:6});
-					window.location.reload();
+					window.location.href=path+'/project/projectUserRender.do?projectId='+projectId;
 				}else{
 					$("#addEditModal").modal('hide');
 					layer.msg('失败了！', {time: 2000, icon:5});
@@ -53,6 +53,7 @@ $(function(){
  });
  
  function deleteUser(userId,roleId){
+	 var projectId = $("#projectId_").val();
 	 $.ajax({
 			url:path+'/project/deleteProjectUserRole.do',
 			type:'post',

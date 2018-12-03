@@ -83,6 +83,11 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 		userRole.setRoleId(i);
 		userRoleMapper.insert(userRole);
 	}
+
+	@Override
+	public List<User> getUsersByUserType(String userType) {
+		return userMapper.getUsersByUserType(userType);
+	}
 	
 	
 }

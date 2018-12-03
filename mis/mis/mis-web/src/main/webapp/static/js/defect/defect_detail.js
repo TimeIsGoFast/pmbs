@@ -1,9 +1,8 @@
- $(document).ready(function () {
+$(document).ready(function () {
    /* $('#dataTables-example').dataTable();*/
-    $("#dataTables-example").dataTable().fnDraw(false);  
+    /*$("#dataTables-example").dataTable().fnDraw(false); */ 
     $("#main-menu li a").removeClass("active-menu");
-	$("#projectInfo").addClass("active-menu");
- 
+	$("#defectInfo").addClass("active-menu");
 	 $('#addEditForm').bootstrapValidator({
 	//   live: 'disabled',
 	   message: 'This value is not valid',
@@ -44,12 +43,15 @@
  });
  
  $(function(){
-	$("#addEditButton").on("click",function(){
+	$("#zhuanpaiBtn").on("click",function(){
+		var code = 2;
+		var defectId = $("#defect_id").val();
+		var resolution = $("#assigneeUidmodel").val();
 		$.ajax({
-			url:path+'/project/addEditPro.do',
+			url:path+'/defect/updateStatus.do',
 			type:'post',
 			dataType:'json',
-			data:$("#addEditForm").serialize(),
+			data:{'defectId':defectId,'code':code,'resolution':resolution},
 			success:function(data){
 				console.log(data);
 				if(data.code==1){
@@ -66,22 +68,21 @@
 	}); 
 	 
 	
-	$("#deleteProject").on("click",function(){
-		var projectId = $("#delete_project_id").val();
-		console.log(projectId);
+	$("#resolutionBtn").on("click",function(){
+		var defectId = $("#defect_id").val();
+		var code=1;
+		var resolution = $("#reolution").val();
 		$.ajax({
-			url:path+'/project/deletePro.do',
+			url:path+'/defect/updateStatus.do',
 			type:'post',
 			dataType:'json',
-			data:{'projectId':projectId},
+			data:{'defectId':defectId,'code':code,'resolution':resolution},
 			success:function(data){
 				console.log(data);
 				if(data.code==1){
-					$("#addEditModal").modal('hide');
 					layer.msg('删除成功！', {time: 2000, icon:6});
 					window.location.reload();
 				}else{
-					$("#addEditModal").modal('hide');
 					layer.msg('删除失败了！', {time: 2000, icon:5});
 					window.location.reload();
 				}

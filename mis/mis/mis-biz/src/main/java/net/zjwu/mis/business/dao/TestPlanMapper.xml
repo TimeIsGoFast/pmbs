@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.zjwu.mis.business.dao.TestPlanMapper" >
+  <resultMap id="BaseResultMap" type="net.zjwu.mis.business.model.TestPlan" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="author" property="author" jdbcType="VARCHAR" />
+    <result column="project_id" property="projectId" jdbcType="INTEGER" />
+    <result column="product" property="product" jdbcType="VARCHAR" />
+    <result column="is_active" property="isActive" jdbcType="INTEGER" />
+    <result column="is_reviewed" property="isReviewed" jdbcType="INTEGER" />
+    <result column="is_approved" property="isApproved" jdbcType="BIT" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="VARCHAR" />
+    <result column="create_user" property="createUser" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="VARCHAR" />
+    <result column="update_user" property="updateUser" jdbcType="VARCHAR" />
+    <result column="assigner_id" property="assignerId" jdbcType="INTEGER" />
+    <result column="assigner_name" property="assignerName" jdbcType="VARCHAR" />
+     <result column="descr" property="descr" jdbcType="LONGVARCHAR" />
+  </resultMap>
+ 
+  <sql id="Base_Column_List" >
+    id, name, author, project_id, product, is_active, is_reviewed, is_approved, status, 
+    create_date, create_user, update_date, update_user, assigner_id, assigner_name, descr
+  </sql>
+  <select id="getTestPlanByName" resultMap="BaseResultMap">
+  select * from test_plan where name=#{name}
+  </select>
+  
+  <insert id="addUserPlanMapper">
+  insert into user_plan(user_id,plan_id) values(#{userId},#{planId})
+  </insert>
+  
+  <delete id="deleteUserAndPlan">
+  delete from user_plan where user_id=#{userId} and plan_id=#{planId}
+  </delete>
+  <select id="getTestPlanByProjectId" resultMap="BaseResultMap">
+  select * from test_plan where project_id = #{projectId} order by update_date DESC
+  </select>
+   <select id="getByUserId" resultMap="BaseResultMap">
+  select * from test_plan where id in(select plan_id from user_plan where user_id=#{userId})
+  </select>
+  
+</mapper>

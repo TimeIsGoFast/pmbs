@@ -7,4 +7,6 @@ public interface ProjectUserRoleService extends BaseService<ProjectUserRole>{
 
 	void deleteByProjectId(int projectId, int userId, int roleId);
 
+	void deleteByProId(int projectId);
+
 }

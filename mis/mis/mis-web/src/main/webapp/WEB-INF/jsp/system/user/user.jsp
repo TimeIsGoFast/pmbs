@@ -37,7 +37,7 @@
                                             <th>邮箱</th>
                                             <th>性别</th>
                                             <th>联系方式</th>
-                                            <th>是否启用</th>
+                                            <th>人员类别</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>
@@ -57,7 +57,7 @@
                                              <td></td>
                                              </c:if>
                                             <td class="center">${User.tel }</td>
-                                            <td class="center">${User.enabled}</td>
+                                            <td class="center">${User.remark}</td>
                                             <td align="center">
                                             <button class="btn btn-primary" title='编辑' onclick="editUserBtn('${User.id}')" id="editUserBtn"><i class="fa fa-edit "></i></button>
                                             <button class="btn btn-danger" title='删除' onclick="deleteUser('${User.id}')"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
@@ -137,6 +137,17 @@
                      		   <select class="form-control" id="sex" name="sex" data-live-search="true">
                      		    <option value="0">男</option>
                      		    <option value="1">女</option>
+	                           </select>
+                           </div>
+                                </div>
+                            </div>
+                             <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">人员类型</label>
+                                <div class="col-sm-6">
+                                   <div>
+                     		   <select class="form-control" id="remark" name="remark" data-live-search="true">
+                     		    <option value="开发人员">开发人员</option>
+                     		    <option value="测试人员">测试人员</option>
 	                           </select>
                            </div>
                                 </div>

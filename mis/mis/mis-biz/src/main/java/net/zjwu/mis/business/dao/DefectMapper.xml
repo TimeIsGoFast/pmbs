@@ -2,41 +2,55 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="net.zjwu.mis.business.dao.DefectMapper" >
   <resultMap id="BaseResultMap" type="net.zjwu.mis.business.model.Defect" >
-    <!--
-      WARNING - @mbggenerated
-    -->
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="defect_num" property="defectNum" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="title" property="title" jdbcType="VARCHAR" />
-    <result column="requirement_id" property="requirementId" jdbcType="INTEGER" />
+    <result column="plan_id" property="planId" jdbcType="INTEGER" />
+    <result column="creator_name" property="creatorName" jdbcType="VARCHAR" />
     <result column="creator_uid" property="creatorUid" jdbcType="INTEGER" />
-    <result column="release_id" property="releaseId" jdbcType="INTEGER" />
-    <result column="cycle_id" property="cycleId" jdbcType="INTEGER" />
-    <result column="defect_tatus_id" property="defectTatusId" jdbcType="INTEGER" />
-    <result column="resolution_id" property="resolutionId" jdbcType="INTEGER" />
-    <result column="severity_id" property="severityId" jdbcType="INTEGER" />
+    <result column="resolution" property="resolution" jdbcType="VARCHAR" />
+    <result column="severity" property="severity" jdbcType="VARCHAR" />
     <result column="assignee_uid" property="assigneeUid" jdbcType="INTEGER" />
-    <result column="cc_user_name" property="ccUserName" jdbcType="VARCHAR" />
-    <result column="created_date" property="createdDate" jdbcType="TIMESTAMP" />
-    <result column="last_update_date" property="lastUpdateDate" jdbcType="TIMESTAMP" />
-    <result column="last_update_uid" property="lastUpdateUid" jdbcType="INTEGER" />
-    <result column="status_code" property="statusCode" jdbcType="CHAR" />
-    <result column="reason_id" property="reasonId" jdbcType="INTEGER" />
+    <result column="created_date" property="createdDate" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="VARCHAR" />
+    <result column="update_uid" property="updateUid" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="reason" property="reason" jdbcType="VARCHAR" />
+    <result column="project_id" property="projectId" jdbcType="INTEGER" />
+    <result column="assignee_name" property="assigneeName" jdbcType="VARCHAR" />
+    <result column="priority" property="priority" jdbcType="VARCHAR" />
+     <result column="pic_url" property="picUrl" jdbcType="VARCHAR" />
     <result column="summary" property="summary" jdbcType="LONGVARCHAR" />
     <result column="descr" property="descr" jdbcType="LONGVARCHAR" />
   </resultMap>
+  
   <sql id="Base_Column_List" >
-    <!--
-      WARNING - @mbggenerated
-    -->
-    id, defect_num, title, requirement_id, creator_uid, release_id, cycle_id, defect_tatus_id, 
-    resolution_id, severity_id, assignee_uid, cc_user_name, created_date, last_update_date, 
-    last_update_uid, status_code, reason_id
+    id, name, title, plan_id, creator_name, creator_uid, resolution, severity, assignee_uid, 
+    created_date, update_date, update_uid, status, reason, project_id, assignee_name, summary, descr,priority
   </sql>
-  <sql id="Blob_Column_List" >
-    <!--
-      WARNING - @mbggenerated
-    -->
-    summary, descr
-  </sql>
+  
+  <select id="getAllByProjectId" resultMap="BaseResultMap">
+  select * from defect where project_id = #{projectId} order by update_date Desc
+  </select>
+  
+  <select id="getNumber" resultType="java.lang.Integer">
+  select count(*) from defect where project_id = #{projectId}
+  </select>
+  
+  <select id="getByDefectName" resultMap="BaseResultMap">
+  select * from defect where name = #{name}
+  </select>
+  
+ <insert id="addUserDefectMapper">
+  insert into user_defect(user_id,defect_id) values(#{userId},#{defectId})
+ </insert>
+ 
+   <delete id="deleteUserAndDefect">
+  delete from user_defect where user_id=#{userId} and defect_id=#{defectId}
+  </delete>
+  
+  <select id="getByUserId" resultMap="BaseResultMap">
+  select * from defect where id in(select defect_id from user_defect where user_id=#{userId})
+  </select>
+ 
 </mapper>

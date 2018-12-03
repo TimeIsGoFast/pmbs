@@ -1,298 +1,209 @@
 package net.zjwu.mis.business.model;
 
-import java.io.Serializable;
-import java.util.Date;
-import javax.persistence.*;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Table(name = "defect")
-public class Defect implements Serializable {
-    @Id
+public class Defect {
+	@Id
     private Integer id;
 
-    @Column(name = "defect_num")
-    private String defectNum;
+    private String name;
 
     private String title;
 
-    @Column(name = "requirement_id")
-    private Integer requirementId;
+    private Integer planId;
 
-    @Column(name = "creator_uid")
+    private String creatorName;
+
     private Integer creatorUid;
 
-    @Column(name = "release_id")
-    private Integer releaseId;
+    private String resolution;
 
-    @Column(name = "cycle_id")
-    private Integer cycleId;
+    private String severity;
 
-    @Column(name = "defect_tatus_id")
-    private Integer defectTatusId;
-
-    @Column(name = "resolution_id")
-    private Integer resolutionId;
-
-    @Column(name = "severity_id")
-    private Integer severityId;
-
-    @Column(name = "assignee_uid")
     private Integer assigneeUid;
 
-    @Column(name = "cc_user_name")
-    private String ccUserName;
+    private String createdDate;
 
-    @Column(name = "created_date")
-    private Date createdDate;
+    private String updateDate;
 
-    @Column(name = "last_update_date")
-    private Date lastUpdateDate;
+    private Integer updateUid;
 
-    @Column(name = "last_update_uid")
-    private Integer lastUpdateUid;
+    private String status;
 
-    @Column(name = "status_code")
-    private String statusCode;
+    private String reason;
 
-    @Column(name = "reason_id")
-    private Integer reasonId;
+    private Integer projectId;
 
-    private static final long serialVersionUID = 1L;
+    private String assigneeName;
+    private String summary;
 
-    /**
-     * @return id
-     */
+    private String descr;
+    
+    private String priority;
+    
+    private String picUrl;
+    
+    
+
+    public String getPicUrl() {
+		return picUrl;
+	}
+
+	public void setPicUrl(String picUrl) {
+		this.picUrl = picUrl;
+	}
+
+	public String getPriority() {
+		return priority;
+	}
+
+	public void setPriority(String priority) {
+		this.priority = priority;
+	}
+
+	public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary == null ? null : summary.trim();
+    }
+
+    public String getDescr() {
+        return descr;
+    }
+
+    public void setDescr(String descr) {
+        this.descr = descr == null ? null : descr.trim();
+    }
+
     public Integer getId() {
         return id;
     }
 
-    /**
-     * @param id
-     */
     public void setId(Integer id) {
         this.id = id;
     }
 
-    /**
-     * @return defect_num
-     */
-    public String getDefectNum() {
-        return defectNum;
+    public String getName() {
+        return name;
     }
 
-    /**
-     * @param defectNum
-     */
-    public void setDefectNum(String defectNum) {
-        this.defectNum = defectNum;
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
-    /**
-     * @return title
-     */
     public String getTitle() {
         return title;
     }
 
-    /**
-     * @param title
-     */
     public void setTitle(String title) {
-        this.title = title;
+        this.title = title == null ? null : title.trim();
     }
 
-    /**
-     * @return requirement_id
-     */
-    public Integer getRequirementId() {
-        return requirementId;
+    public Integer getPlanId() {
+        return planId;
     }
 
-    /**
-     * @param requirementId
-     */
-    public void setRequirementId(Integer requirementId) {
-        this.requirementId = requirementId;
+    public void setPlanId(Integer planId) {
+        this.planId = planId;
     }
 
-    /**
-     * @return creator_uid
-     */
+    public String getCreatorName() {
+        return creatorName;
+    }
+
+    public void setCreatorName(String creatorName) {
+        this.creatorName = creatorName == null ? null : creatorName.trim();
+    }
+
     public Integer getCreatorUid() {
         return creatorUid;
     }
 
-    /**
-     * @param creatorUid
-     */
     public void setCreatorUid(Integer creatorUid) {
         this.creatorUid = creatorUid;
     }
 
-    /**
-     * @return release_id
-     */
-    public Integer getReleaseId() {
-        return releaseId;
+    public String getResolution() {
+        return resolution;
     }
 
-    /**
-     * @param releaseId
-     */
-    public void setReleaseId(Integer releaseId) {
-        this.releaseId = releaseId;
+    public void setResolution(String resolution) {
+        this.resolution = resolution == null ? null : resolution.trim();
     }
 
-    /**
-     * @return cycle_id
-     */
-    public Integer getCycleId() {
-        return cycleId;
+    public String getSeverity() {
+        return severity;
     }
 
-    /**
-     * @param cycleId
-     */
-    public void setCycleId(Integer cycleId) {
-        this.cycleId = cycleId;
+    public void setSeverity(String severity) {
+        this.severity = severity == null ? null : severity.trim();
     }
 
-    /**
-     * @return defect_tatus_id
-     */
-    public Integer getDefectTatusId() {
-        return defectTatusId;
-    }
-
-    /**
-     * @param defectTatusId
-     */
-    public void setDefectTatusId(Integer defectTatusId) {
-        this.defectTatusId = defectTatusId;
-    }
-
-    /**
-     * @return resolution_id
-     */
-    public Integer getResolutionId() {
-        return resolutionId;
-    }
-
-    /**
-     * @param resolutionId
-     */
-    public void setResolutionId(Integer resolutionId) {
-        this.resolutionId = resolutionId;
-    }
-
-    /**
-     * @return severity_id
-     */
-    public Integer getSeverityId() {
-        return severityId;
-    }
-
-    /**
-     * @param severityId
-     */
-    public void setSeverityId(Integer severityId) {
-        this.severityId = severityId;
-    }
-
-    /**
-     * @return assignee_uid
-     */
     public Integer getAssigneeUid() {
         return assigneeUid;
     }
 
-    /**
-     * @param assigneeUid
-     */
     public void setAssigneeUid(Integer assigneeUid) {
         this.assigneeUid = assigneeUid;
     }
 
-    /**
-     * @return cc_user_name
-     */
-    public String getCcUserName() {
-        return ccUserName;
-    }
-
-    /**
-     * @param ccUserName
-     */
-    public void setCcUserName(String ccUserName) {
-        this.ccUserName = ccUserName;
-    }
-
-    /**
-     * @return created_date
-     */
-    public Date getCreatedDate() {
+    public String getCreatedDate() {
         return createdDate;
     }
 
-    /**
-     * @param createdDate
-     */
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate == null ? null : createdDate.trim();
     }
 
-    /**
-     * @return last_update_date
-     */
-    public Date getLastUpdateDate() {
-        return lastUpdateDate;
+    public String getUpdateDate() {
+        return updateDate;
     }
 
-    /**
-     * @param lastUpdateDate
-     */
-    public void setLastUpdateDate(Date lastUpdateDate) {
-        this.lastUpdateDate = lastUpdateDate;
+    public void setUpdateDate(String updateDate) {
+        this.updateDate = updateDate == null ? null : updateDate.trim();
     }
 
-    /**
-     * @return last_update_uid
-     */
-    public Integer getLastUpdateUid() {
-        return lastUpdateUid;
+    public Integer getUpdateUid() {
+        return updateUid;
     }
 
-    /**
-     * @param lastUpdateUid
-     */
-    public void setLastUpdateUid(Integer lastUpdateUid) {
-        this.lastUpdateUid = lastUpdateUid;
+    public void setUpdateUid(Integer updateUid) {
+        this.updateUid = updateUid;
     }
 
-    /**
-     * @return status_code
-     */
-    public String getStatusCode() {
-        return statusCode;
+    public String getStatus() {
+        return status;
     }
 
-    /**
-     * @param statusCode
-     */
-    public void setStatusCode(String statusCode) {
-        this.statusCode = statusCode;
+    public void setStatus(String status) {
+        this.status = status == null ? null : status.trim();
     }
 
-    /**
-     * @return reason_id
-     */
-    public Integer getReasonId() {
-        return reasonId;
+    public String getReason() {
+        return reason;
     }
 
-    /**
-     * @param reasonId
-     */
-    public void setReasonId(Integer reasonId) {
-        this.reasonId = reasonId;
+    public void setReason(String reason) {
+        this.reason = reason == null ? null : reason.trim();
+    }
+
+    public Integer getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(Integer projectId) {
+        this.projectId = projectId;
+    }
+
+    public String getAssigneeName() {
+        return assigneeName;
+    }
+
+    public void setAssigneeName(String assigneeName) {
+        this.assigneeName = assigneeName == null ? null : assigneeName.trim();
     }
 }

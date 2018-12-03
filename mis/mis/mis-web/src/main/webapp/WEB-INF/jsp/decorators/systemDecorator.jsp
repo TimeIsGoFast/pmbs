@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,7 +41,6 @@
 		<i class="fa fa-bars icon"></i> 
 		</div>
             </div>
-
             <ul class="nav navbar-top-links navbar-right">
                 <!-- /.dropdown -->
                 <li class="dropdown">
@@ -60,6 +59,23 @@
                 </li>
                 &nbsp;&nbsp;&nbsp;
             </ul>
+            <ul class="nav navbar-top-links navbar-right">
+                <!-- /.dropdown -->
+                ${current_project.name}
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                       <c:forEach items="${projects}" var="Project">
+                        <li><a href="${pageContext.request.contextPath}/project/changeProject.do?id=${Project.id}">${Project.name }</a>
+                        </li>
+                       </c:forEach>
+                       
+                    </ul>
+                </li>
+            
+            </ul>
         </nav>
         <!--/. NAV TOP  -->
         <nav class="navbar-default navbar-side" role="navigation">
@@ -75,17 +91,18 @@
                      <li>
                         <a href="${pageContext.request.contextPath}/project/render.do" id="projectInfo"><i class="fa fa-book"></i>项目管理</a>
                     </li>
+                    
                     <li>
-                        <a href="#" id="touristInfo"><i class="fa fa-map-marker"></i>需求管理</a>
+                        <a href="${pageContext.request.contextPath}/testplan/render.do" id="testplanInfo"><i class="fa fa-map-marker"></i>测试计划</a>
                     </li>
 				
                     <li>
-                        <a href="#" id="sentence"><i class="fa fa-edit"></i>缺陷管理</a>
+                        <a href="${pageContext.request.contextPath}/defect/render.do" id="defectInfo"><i class="fa fa-edit"></i>缺陷管理</a>
+                    </li>
+                    <li>
+                        <a href="${pageContext.request.contextPath}/task/render.do" id="taskInfo"><i class="fa fa-table"></i>我的任务</a>
                     </li>
                     
-                    <li>
-                        <a href="${pageContext.request.contextPath}/project/myproject.do"><i class="fa fa-table"></i>我的项目</a>
-                    </li>
                
                    
                 </ul>
